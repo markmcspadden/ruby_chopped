@@ -2,16 +2,15 @@
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'ruby_chopped'
+require 'fileutils'
 
 if "new" == ARGV.shift && ARGV.first
   folder = ARGV.shift
   
   puts "Creating #{folder} basket..."
   
-  # TODO: Use Ruby for this
-  `mkdir #{folder}`
-  `mkdir #{folder}/lib`
-  `touch #{folder}/lib/#{folder}.rb`
+  FileUtils.mkdir_p(File.join(folder, "lib"))
+  FileUtils.touch(File.join(folder, "lib", "#{folder}.rb"))
   File.open("#{folder}/Gemfile", "wb+") do |f|
     f << RubyChopped.gemfile_string
   end
