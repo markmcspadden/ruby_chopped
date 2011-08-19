@@ -4,7 +4,8 @@ require 'json'
 module RubyChopped
   def self.gemfile_array
     gas = []
-    gas << "http://rubygems.org"
+    gas << "source \"http://rubygems.org\""
+    gas << ""
     
     gems = random_gems
     gems.each do |g|
@@ -30,7 +31,20 @@ module RubyChopped
     
   def self.random_gems(limit=2)
     gems = fetch_gems
-    limit.to_i.times.collect{ gems.delete_at(rand(gems.size)) }
+    gems = pick_gems(gems, limit)
+  end
+  
+  def self.pick_gems(gems, limit)
+    limit.to_i.times.collect do 
+      g = gems.delete_at(rand(gems.size)) 
+
+      # Skip bundler and rails
+      if g.first["full_name"][/(bundler|rails)/]
+        pick_gems(gems, 1).first
+      else
+        g
+      end
+    end
   end
   
   def self.fetch_gems
