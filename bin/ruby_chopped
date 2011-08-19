@@ -2,28 +2,21 @@
 
 $LOAD_PATH.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'ruby_chopped'
+require 'optparse'
 
-if "new" == ARGV.shift && ARGV.first
-  folder = ARGV.shift
-  
-  puts "Creating #{folder} basket..."
-  
-  # TODO: Use Ruby for this
-  `mkdir #{folder}`
-  `mkdir #{folder}/lib`
-  `touch #{folder}/lib/#{folder}.rb`
-  File.open("#{folder}/Gemfile", "wb+") do |f|
-    f << RubyChopped.gemfile_string
+@options = {}
+parser = OptionParser.new do |o|
+  o.on('-n', '--name [name]', 'name of project to create') do |n|
+    @options[:name] = n
   end
-  
-  puts ""
-  puts "Your basket is ready. Open the Gemfile to see what you'll be working with today."
-
-  puts ""
-  puts "You'll want to cd into #{folder} and run 'bundle install' first"
-  puts "Enjoy!"
-else
-  puts "Unknown Action. Please use 'ruby_chopped new my_new_basket'"
+  o.on('-f', '--force', 'force overwriting existing project') do
+    @options[:force] = true
+  end
+end
+parser.parse!
+unless @options[:name]
+  puts parser
+  exit 1
 end
 
-exit!
+RubyChopped.create(@options)
