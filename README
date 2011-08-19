@@ -1,3 +1,11 @@
 RubyChopped
 
 Modeled after (but certainly not affiliated with) the Chopped show on the Food Network, this gem delivers you a Ruby project (or basket) with 2 gems (ingredients) chosen at random. Your challenge: Make something cool with the given gems.
+
+Usage
+
+gem install ruby_chopped
+
+then
+
+ruby_chopped new whyday_basket
