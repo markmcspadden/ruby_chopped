@@ -12,6 +12,9 @@ parser = OptionParser.new do |o|
   o.on('-f', '--force', 'force overwriting existing project') do
     @options[:force] = true
   end
+  o.on('-l', '--limit [limit]', 'name of project to create') do |l|
+    @options[:limit] = l
+  end
 end
 parser.parse!
 unless @options[:name]
