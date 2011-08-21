@@ -125,6 +125,6 @@ module RubyChopped
     gems_json = JSON.parse(RestClient.get("http://rubygems.org/api/v1/downloads/top.json", :accepts => :json))
     
     gems_json["gems"].each { |g| gems << g.first["full_name"].split(/-\d\.\d\.\d/).first }
-    gems
+    gems.uniq!
   end
 end
