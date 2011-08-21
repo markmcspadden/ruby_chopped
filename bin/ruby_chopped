@@ -12,7 +12,7 @@ parser = OptionParser.new do |o|
   o.on('-f', '--force', 'force overwriting existing project') do
     @options[:force] = true
   end
-  o.on('-l', '--limit [limit]', 'name of project to create') do |l|
+  o.on('-l', '--limit [limit]', 'number of gems to add to the basket') do |l|
     @options[:limit] = l
   end
 end
