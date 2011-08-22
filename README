@@ -10,6 +10,10 @@ then
 
 ruby_chopped --name whyday_basket
 
+or to get more than 2 gems (which is the default)
+
+ruby_chopped -n whyday_basket2 --limit 4
+
 or to view more options
 
 ruby_chopped
