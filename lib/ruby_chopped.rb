@@ -20,7 +20,7 @@ module RubyChopped
     File.open("#{folder}/lib/#{folder}.rb", "w") {|f| f.puts "# Where the magic happens!" }
 
     File.open("#{folder}/Gemfile", "wb+") do |f|
-      f << RubyChopped.gemfile_string
+      f << RubyChopped.gemfile_string(opts[:limit] || 2)
     end
     
     puts ""
@@ -31,12 +31,12 @@ module RubyChopped
     puts "Enjoy!"
   end
 
-  def gemfile_array
+  def gemfile_array(limit)
     gas = []
     gas << "source \"http://rubygems.org\""
     gas << ""
     
-    gems = random_gems
+    gems = random_gems(limit)
     gems.each do |g|
       # Janky way to pull the name
       g = g.first
@@ -54,11 +54,11 @@ module RubyChopped
     gas
   end
   
-  def gemfile_string
-    gemfile_array.join("\n")
+  def gemfile_string(limit)
+    gemfile_array(limit).join("\n")
   end
     
-  def random_gems(limit=2)
+  def random_gems(limit)
     gems = fetch_gems
     gems = pick_gems(gems, limit)
   end
