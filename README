@@ -6,15 +6,22 @@ Usage
 
 gem install ruby_chopped
 
-then
+then to create a new basket that pull 2 of the 50 most popular gems on rubygems.org
 
 ruby_chopped --name whyday_basket
 
-or to get more than 2 gems (which is the default)
+
+or to get more than 2 gems
 
 ruby_chopped -n whyday_basket2 --limit 4
 
-or to view more options
+
+or to choose from your locally installed gems instead of rubygems.org
+
+ruby_chopped -n whyday_basket2 --installed
+
+
+or to view more of the great options
 
 ruby_chopped
 
@@ -26,3 +33,4 @@ markmcspadden
 badboy
 agile
 smnickerson 
+jwarzech
