@@ -8,7 +8,11 @@ gem install ruby_chopped
 
 then
 
-ruby_chopped new whyday_basket
+ruby_chopped --name whyday_basket
+
+or to view more options
+
+ruby_chopped
 
 
 Contributors
@@ -16,3 +20,4 @@ Contributors
 markmcspadden
 
 badboy
+agile
