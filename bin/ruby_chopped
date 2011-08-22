@@ -6,15 +6,24 @@ require 'optparse'
 
 @options = {}
 parser = OptionParser.new do |o|
+  # Option: Set Name
   o.on('-n', '--name [name]', 'name of project to create') do |n|
     @options[:name] = n
   end
+  # Option: Force overwrite
   o.on('-f', '--force', 'force overwriting existing project') do
     @options[:force] = true
   end
-  
   o.on('-l', '--limit [limit]', 'number of gems to add to the basket') do |l|
     @options[:limit] = l
+  end
+  # Option: Select only from locally installed gems
+  o.on('-i', '--installed', 'only select gems that are locally installed') do
+    @options[:installed_gems] = true
+  end
+  # Option: Select from all gems
+  o.on('-a', '--all', 'select from all existing gems') do
+    @options[:all_gems] = true
   end
 end
 parser.parse!
