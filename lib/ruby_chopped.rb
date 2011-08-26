@@ -61,6 +61,7 @@ module RubyChopped
       gas << "#    - Project page: #{project_uri}" unless project_uri.nil? || project_uri.empty?
       gas << "#    - Documentation: #{documentation_uri}" unless documentation_uri.nil? || documentation_uri.empty?
       gas << "#    - Wiki: #{wiki_uri}" unless wiki_uri.nil? || wiki_uri.empty?
+      gas << "#    - Mailing List: #{mailing_list_uri}" unless mailing_list_uri.nil? || mailing_list_uri.empty?
       gas << "gem \"#{g}\", \"#{number}\""
       gas << ""
     end
